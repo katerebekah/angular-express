@@ -1,15 +1,23 @@
 extends layout
 
 block body
-  div.container(ng-controller='AppCtrl')
-    h2(ng-show="name") Hello {{name}}
+  div(ng-controller='AppCtrl')
+    nav.navbar.navbar-default
+      div.container-fluid
+        div.navbar-header
+          a(href='/')
+            img.navbar-brand(src='/images/todo.svg')
+            p.navbar-text To Do App
+          p.navbar-text(ng-show='name') Welcome, {{name}}
+        ul.nav.navbar-nav
+            li(ng-hide='name')
+              a(href='/login') Login
+            li(ng-hide='name')
+              a(href='/register') Register
+            li(ng-show='name')
+              a(href='/tasks') View Your Task List
+            li(ng-show='name')
+              a(href='/add') Add a Task to Your List
+            li(ng-show='name')
+              a(href='/logout') Log Out
     div.container(ng-view)
-
-    div
-      | Angular seed app: v
-      span(app-version)
-
-    table.table
-      tr
-        td Hello
-        td World

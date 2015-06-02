@@ -3,11 +3,32 @@
 .title {
   color:white;
 }
-nav, .navbar, .navbar-default {
+nav, .navbar, .navbar-default, footer{
   background-image: none;
-  background-color: rgba(0, 75, 10, .1);
+  background-color: rgba(0, 75, 95, .1);
 }
-
+footer{
+  background-color: rgba(0, 75, 95, .3);
+  padding-top: 50px;
+}
+.marginTop {
+  margin-top:50px;
+}
+  .jumbotron {
+    background: url('/images/stockvault-red-poppy-meadow118132.jpg');
+    background-size: 100% auto;
+    background-position: center top;
+    background-repeat: no-repeat no-repeat;
+    background-color: rgba(0, 75, 95, .8);
+  }
+.jumbotron h1{
+  color:white;
+}
+.panel-todo .panel-heading {
+    color: #ffffff;
+    background-color: #004d5d;
+    border-color: #6b97a0;
+}
 .menu {
   list-style: none;
   border-bottom: 0.1em solid black;
@@ -35,4 +56,12 @@ nav, .navbar, .navbar-default {
 .menu > li:nth-child(1):before {
   content: "";
   padding: 0;
+}
+
+
+@media (max-width: 992px){
+
+  .jumbotron {
+    background-size: auto 100%;
+  }
 }

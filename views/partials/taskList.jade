@@ -3,7 +3,7 @@ div.col-md-12
     p.title(ng-show="tasks") Welcome back, {{name}}! You have {{tasks.length}} items in your queue.
   div#tasks.row
       div.col-sm-12.col-md-4(ng-repeat="task in tasks")
-        div.panel.panel-default
+        div.panel(ng-class="priorityClass(task.priority)")
           div.panel-heading
             h3.panel-title {{task.title}}
           div.panel-body

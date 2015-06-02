@@ -1,9 +1,11 @@
-div.col-md-5.col-md-offset-1 
-  img.responsive(src='/images/todo.svg')
-div.col-md-6 
-  div.panel.panel-success
+div.col-lg-6.col-lg-offset-0.col-md-6.col-sm-8.col-sm-offset-2.col-xs-10.col-xs-offset-1
+  div.panel.panel-todo
     div.panel-heading
-      h3.title Add a Task
+      div.row
+        div.col-sm-3.col-xs-4.hidden-md.hidden-lg
+          img.responsive(src='/images/todo.svg')
+        div.col-sm-9.col-xs-8
+          h3.title Add a Task
     div.panel-body
       form
         div.form-group
@@ -24,8 +26,10 @@ div.col-md-6
             option(value='4') Red (high priority)
         div.row
           div.col-md-6
-            input.btn.btn-lg.btn-success(type='submit', value='Add Task')
+            input.btn.btn-lg.btn-default(type='submit', value='Add Task')
           div.col-md-6.checkbox
             label
               input(type='checkbox', name='completed') 
               | Completed
+div.col-lg-4.col-lg-offset-1.col-md-4.hidden-sm.hidden-xs
+  img.responsive(src='/images/todo.svg')

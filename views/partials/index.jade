@@ -1,0 +1,20 @@
+div.jumbotron.marginTop(ng-hide='name')
+	h1.title.hidden-xs To Do Application
+	h3.title.hidden-sm.hidden-md.hidden-lg To Do Application
+	p.title 
+		| Record Your Todos. Live Life Organized. Remember free.
+	p
+		a.btn.btn-default(href='/register')  Register Today 
+		|   
+		a.btn.btn-default(href='/login')  Log In 
+div.jumbotron.marginTop(ng-show='name')
+	h1.title.hidden-xs {{name}}'s To Do Application
+	h3.title.hidden-sm.hidden-md.hidden-lg {{name}}'s To Do Application
+	p.title 
+		| Record Your Todos. Live Life Organized. Remember free.
+	p
+		a.btn.btn-default(href='/tasks')  See Your Task List 
+		|   
+		a.btn.btn-default(href='/add')  Add a Task to Your List 
+		| 
+		a.btn.btn-default Log Out

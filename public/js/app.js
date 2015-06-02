@@ -10,13 +10,9 @@ angular.module('myApp', [
 ]).
 config(function ($routeProvider, $locationProvider) {
   $routeProvider.
-    when('/view1', {
-      templateUrl: 'partials/partial1',
-      controller: 'MyCtrl1'
-    }).
-    when('/view2', {
-      templateUrl: 'partials/partial2',
-      controller: 'MyCtrl2'
+    when('/index', {
+      templateUrl: 'partials/index',
+      controller: 'indexCtrl'
     }).
     when('/login', {
       templateUrl: 'partials/login',
@@ -35,7 +31,7 @@ config(function ($routeProvider, $locationProvider) {
       controller: 'addCtrl'
     }).
     otherwise({
-      redirectTo: '/view1'
+      redirectTo: '/index'
     });
 
   $locationProvider.html5Mode(true);
