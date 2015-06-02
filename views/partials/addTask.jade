@@ -1,0 +1,23 @@
+div.col-md-4.col-md-offset-4  
+  h1 Add Task
+  form
+    div.form-group
+      label Title
+      input.form-control(type='text', name='title')
+    div.form-group
+      label Description  
+      textarea.form-control(rows='3', name='description')
+    div.form-group
+      label Due Date
+      input.form-control(type='date', name='due_date')
+    label Priority
+      select.form-control
+        option(value='1') Blue (low priority)
+        option(value='2') Green
+        option(value='3') Yellow
+        option(value='4') Red (high priority)
+    div.checkbox
+      label
+        input(type='checkbox', name='completed') 
+        | Completed
+    input.btn.btn-default(type='submit', value='Add Task')

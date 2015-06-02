@@ -1,0 +1,13 @@
+div.col-md-9
+  div#tasks.row
+      div.col-sm-12.col-md-4(ng-repeat="task in tasks")
+        div.panel.panel-default
+          div.panel-heading
+            h3.panel-title {{task.title}}
+          div.panel-body
+            p {{task.description}}
+            p {{task.due_date}}
+            div.checkbox
+              label
+                input(type='checkbox', name='completed', value='{{task.completed}}') 
+                | Completed
