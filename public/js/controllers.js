@@ -38,10 +38,12 @@ angular.module('myApp.controllers', []).
     // write Ctrl here
     $scope.message = "Task List";
     $scope.tasks = [
-      {title: "hello", description: "LOL", due_date: "1/22/2016", priority: 3, completed: false},
+      {title: "hello", description: "LOL", due_date: "1/22/2016", priority: 1, completed: false},
+      {title: "hello", description: "LOL", due_date: "1/22/2016", priority: 2, completed: false},
+      {title: "hello", description: "LOL", due_date: "1/22/2016", priority: 4, completed: false},
       {title: "hello", description: "LOL", due_date: "1/22/2016", priority: 3, completed: false}
     ];
-
+    
   }).
   controller('addCtrl', function ($scope) {
     // write Ctrl here

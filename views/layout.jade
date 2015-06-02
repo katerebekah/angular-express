@@ -4,9 +4,26 @@ html(ng-app="myApp")
     meta(charset='utf8')
     base(href='/')
     title Angular Express Seed App
-    link(rel='stylesheet', href='/css/app.css')
     link(rel='stylesheet', href='/bower_components/bootstrap/dist/css/bootstrap.min.css')
+    link(rel='stylesheet', href='/css/app.css')
   body
+    nav.navbar.navbar-default
+      div.container-fluid
+        div.navbar-header
+          a(href="/")
+            img.navbar-brand(src="/images/todo.svg")
+            p.navbar-text To Do App
+        ul.nav.navbar-nav.navbar-right
+            li(ng-hide="name")
+              a(href="/login") Login
+            li(ng-hide="name")
+              a(href="/register") Register
+            li(ng-show="name")
+              a(href="/tasks") Task List
+            li(ng-show="name")
+              a(href="/add") Add a Task
+            li(ng-show="name")
+              a(href="/logout") Log Out
     block body
 
   script(src='js/lib/angular/angular.js')

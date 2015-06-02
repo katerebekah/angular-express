@@ -1,5 +1,13 @@
 /* app css stylesheet */
 
+.title {
+  color:white;
+}
+nav, .navbar, .navbar-default {
+  background-image: none;
+  background-color: rgba(0, 75, 10, .1);
+}
+
 .menu {
   list-style: none;
   border-bottom: 0.1em solid black;
