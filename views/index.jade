@@ -19,5 +19,5 @@ block body
             li(ng-show='name')
               a(href='/add') Add a Task to Your List
             li(ng-show='name')
-              a(href='/logout') Log Out
+              a(ng-click='logout()') Log Out
     div.container(ng-view)

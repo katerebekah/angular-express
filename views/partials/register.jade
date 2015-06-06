@@ -7,17 +7,17 @@ div.col-lg-5.col-lg-offset-1.col-md-6.col-sm-8.col-sm-offset-2.col-xs-10.col-xs-
         div.col-sm-9.col-xs-9
           h3.title Register
     div.panel-body
-      form
+      form(role='form', novalidate, name='userForm')
         div.form-group
           label Username
-          input.form-control(type='text', name='username')
+          input.form-control(type='text', name='username', ng-model='user.username' required, autofocus, ng-minlength='3')
         div.form-group
           label Password
-          input.form-control(type='password', name='password')
+          input.form-control(type='password', name='password', ng-model='user.password', required, ng-minlength='3')
         div.form-group
           label Confirm Password
           input.form-control(type='password')
-        input.btn.btn-default(type='submit', value='Register')
+        input.btn.btn-default(type='submit', value='Register', ng-show='userForm.$valid', ng-click='register()')
 div.col-lg-4.col-lg-offset-1.col-md-5.col-md-offset-1.hidden-sm.hidden-xs
   img.responsive(src='/images/todo.svg')
 

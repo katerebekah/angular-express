@@ -55,7 +55,7 @@ router.get('/:id', function (req, res) {
 
     // Find was successful
     } else {
-      res.json(item);
+      res.json(thisItem);
     }
   });
 });
@@ -104,5 +104,4 @@ router.post('/', function (req, res, next) {
   });
 
 });
-
 module.exports = router;

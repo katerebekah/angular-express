@@ -10,26 +10,26 @@ div.col-lg-6.col-lg-offset-0.col-md-6.col-sm-8.col-sm-offset-2.col-xs-10.col-xs-
       form
         div.form-group
           label Title
-          input.form-control(type='text', name='title')
+          input.form-control(type='text', name='title', ng-model="item.title")
         div.form-group
           label Description  
-          textarea.form-control(rows='2', name='description')
+          textarea.form-control(rows='2', name='description', ng-model="item.description")
         div.form-group
           label Due Date
-          input.form-control(type='date', name='due_date')
+          input.form-control(type='date', name='due_date', ng-model='item.due_date')
         div.form-group
           label Priority
-          select.form-control
+          select.form-control(name='priority', ng-model='item.priority')
             option(value='1') Blue (low priority)
             option(value='2') Green
             option(value='3') Yellow
             option(value='4') Red (high priority)
         div.row
           div.col-md-6
-            input.btn.btn-lg.btn-default(type='submit', value='Add Task')
+            input.btn.btn-lg.btn-default(type='submit', value='Add Task', ng-click="addTask()")
           div.col-md-6.checkbox
             label
-              input(type='checkbox', name='completed') 
+              input(type='checkbox', name='completed', ng-model='completed') 
               | Completed
 div.col-lg-4.col-lg-offset-1.col-md-4.hidden-sm.hidden-xs
   img.responsive(src='/images/todo.svg')
