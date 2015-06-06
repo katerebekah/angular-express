@@ -3,28 +3,18 @@
 /* Controllers */
 
  var controllers = angular.module('myApp.controllers', []);
-   controllers.controller('AppCtrl', function ($scope, $rootScope, $http, $location) {
-
-        $http({
-          method: 'GET',
-          url: '/api/user',
-        }).
-        success(function (data, status, headers, config) {
-          $rootScope.name = data.username;
-        }).
-        error(function (data, status, headers, config) {
-        });
-  
+   controllers.controller('AppCtrl', function ($scope, $location, apiService) {
+    
+    //get user name for rootscope on page load/reload
+    $scope.getUser = function(){
+        apiService.getCurrentUser()
+    };
+    $scope.getUser();
+        
+    //log out user, reset rootScope name, and redirect to index
     $scope.logout = function(){
-      $http({
-        method: 'GET',
-        url: '/api/user/logout',
-      }).
-      success(function (data, status, headers, config) {
-        $rootScope.name = '';
+      apiService.logoutUser().then(function(data){
         $location.path('/');
-      }).
-      error(function (data, status, headers, config) {
-      });
+      })
     }
-  })
+  });

@@ -1,4 +1,24 @@
 /* app css stylesheet */
+.panel-red .panel-heading {
+    color: #ffffff;
+    background-color: #ac0202;
+    border-color: #df8d8d;
+}
+.panel-orange .panel-heading {
+    color: #ffffff;
+    background-color: #f14400;
+    border-color: #f7ae91;
+}
+.panel-green .panel-heading {
+    color: #ffffff;
+    background-color: #034a1b;
+    border-color: #658568;
+}
+.panel-blue .panel-heading {
+    color: #ffffff;
+    background-color: #0c3966;
+    border-color: #768390;
+}
 
 .title {
   color:white;

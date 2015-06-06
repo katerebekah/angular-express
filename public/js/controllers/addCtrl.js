@@ -1,20 +1,11 @@
 
-controllers.controller('addCtrl', function ($scope, $http, $location) {
+controllers.controller('addCtrl', function ($scope, $location, apiService) {
   $scope.message = "Task List";
+  //add task to list and redirect to the task list page
   $scope.addTask = function(){
-
-    $http({
-      method: 'POST',
-      url: '/api/tasks',
-      data: $scope.item
-    }).
-    success(function (data, status, headers, config) {
-      console.log(data);
-    	  $location.path('/tasks');
-    }).
-    error(function (data, status, headers, config) {
-      console.log(data);
+    apiService.addTask($scope.item).then(function() {
+        $location.path('/tasks')
     });
-
-  } 
+  }
+   
 });

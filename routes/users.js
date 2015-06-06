@@ -18,12 +18,12 @@ app.post("/register", function (req, res) {
 
 app.get("/", function (req, res) {
   var user = UserController.getCurrentUser();
-
   if (user === null) {
     res.status(403).send('Not authenticated');
   }
-
-  res.status(200).json(user);
+  else {
+    res.status(200).json(user);
+  }
 
 });
 

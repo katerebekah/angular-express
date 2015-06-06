@@ -1,69 +1,57 @@
-controllers.controller('listCtrl', function($scope, $http, $rootScope, $location) {
+controllers.controller('listCtrl', function($scope, $location, apiService) {
     // write Ctrl here
-    $scope.message = "Task List";
+
+    //Get List on Page Load
     $scope.getList = function() {
-        $http({
-            method: 'GET',
-            url: '/api/tasks'
-        }).
-        success(function(data, status, headers, config) {
-            $scope.tasks = data.reverse();
-        }).
-        error(function(data, status, headers, config) {
-            console.log(data);
+        apiService.getUserTasks().then(function(response) {
+            $scope.tasks = response.data;
         });
     };
     $scope.getList();
+
+    //set classes by priority level
     $scope.priorityClass = function(priority) {
         switch (priority) {
             case 1:
-                return 'panel-primary';
+                return 'panel-blue';
             case 2:
-                return 'panel-success';
+                return 'panel-green';
             case 3:
-                return 'panel-warning';
+                return 'panel-orange';
             case 4:
-                return 'panel-danger';
+                return 'panel-red';
             default:
                 return '';
         };
     };
-
+    //make task editable (reveal form)
     $scope.enableEdit = function(itemID) {
         $scope.editID = itemID;
     };
-
+    //cancel edit view
     $scope.cancelEdit = function(item) {
         $scope.editID = false;
     };
+    //POST edit (remove current version, add new version) and update list
     $scope.submitEdit = function(item, itemID) {
-        $scope.delete(itemID);
-        $http({
-            method: 'POST',
-            url: '/api/tasks',
-            data: item
-        }).
-        success(function(data, status, headers, config) {
-            $scope.editItem = false;
+        apiService.deleteUserTask(itemID);
+        apiService.addUserTask(item).then(function(data) {
             $scope.getList();
-        }).
-        error(function(data, status, headers, config) {
-            console.log(data);
         });
     };
-
+    //delete Task and update list
     $scope.delete = function(itemid) {
-        console.log(itemid);
-        $http({
-            method: 'DELETE',
-            url: '/api/tasks/' + itemid
-        }).
-        success(function(data, status, headers, config) {
+        apiService.deleteUserTask(itemid).then(function(data) {
             $scope.getList();
-        }).
-        error(function(data, status, headers, config) {
-            console.log(data);
         });
+    };
+    //add Task to list and update list
+    $scope.add = function() {
+        apiService.addUserTask($scope.item).then(function(data) {
+            $scope.getList();
+        });
+        //reset item in page view so form becomes empty
+        $scope.item = {};
     };
 
 });

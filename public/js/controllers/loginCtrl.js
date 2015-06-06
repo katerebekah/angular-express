@@ -1,20 +1,14 @@
 
-controllers.controller('loginCtrl', function ($scope, $http, $location, $rootScope) {
+controllers.controller('loginCtrl', function ($scope, $location, apiService) {
   // write Ctrl here
     $scope.user = {};
-    $scope.message = "Log In";
+    //login in user, set rootscope name, and redirect to tasks page
     $scope.login = function(){
-    	$http({
-    	  method: 'POST',
-    	  url: '/api/user/login',
-    	  data: $scope.user
-    	}).
-    	success(function (data, status, headers, config) {
-    	  $rootScope.name = data.username;
-    	  $location.path('/tasks')
-    	}).
-    	error(function (data, status, headers, config) {
-  			console.log(data)
-    	});
-    };
+        apiService.loginUser($scope.user).then(function(data){
+        	$location.path('/tasks')
+        }, function(errData){
+        		console.log(errData);
+      	});
+    }
+
 })

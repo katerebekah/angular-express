@@ -2,7 +2,36 @@ div.col-md-12
   div.alert.alert-success
     p.title Welcome back, {{name}}! You have {{tasks.length}} items in your queue.
   div#tasks.row
-      div.col-sm-12.col-md-4(ng-repeat='task in tasks')
+      div.col-sm-6.col-md-4 
+        div.panel.panel-todo
+          div.panel-heading
+            h5.title Add a Task
+          div.panel-body
+            form
+              div.form-group
+                label Title
+                input.form-control(type='text', name='title', ng-model="item.title")
+              div.form-group
+                label Description  
+                textarea.form-control(rows='2', name='description', ng-model="item.description")
+              div.form-group
+                label Due Date
+                input.form-control(type='date', name='due_date', ng-model='item.due_date')
+              div.form-group
+                label Priority
+                select.form-control(name='priority', ng-model='item.priority')
+                  option(value='1') Blue (low priority)
+                  option(value='2') Gree
+                  option(value='3') Orange
+                  option(value='4') Red (high priority)
+              div.row
+                div.col-md-6
+                  input.btn.btn-lg.btn-default(type='submit', value='Add Task', ng-click="add()")
+                div.col-md-6.checkbox
+                  label
+                    input(type='checkbox', name='completed', ng-model='completed') 
+                    | Completed
+      div.col-sm-6.col-md-4(ng-repeat='task in tasks')
         div.panel(ng-class='priorityClass(task.priority)', ng-dblclick='enableEdit(task._id)')
           div.panel-heading
             h5.title {{task.title}}
@@ -32,6 +61,6 @@ div.col-md-12
                 | Completed
 
             button.btn.btn-default(name='edit', ng-click='enableEdit(task._id)', ng-hide='editID == task._id') Edit
-            button.btn.btn-default(name='edit', ng-click='submitEdit({title: task.title, description: task.description, due_date: task.due_date, priority: task.priority, completed: task.completed}, task._id)', ng-show='editID == task._id') Edit
+            button.btn.btn-default(name='edit', ng-click='submitEdit({title: task.title, description: task.description, due_date: task.due_date, priority: task.priority, completed: task.completed}, task._id)', ng-show='editID == task._id') Save
             button.btn.btn-default(name='edit', ng-click='cancelEdit(task)', ng-show='editID == task._id') Cancel
             button.btn.btn-default(name='delete', ng-click='delete(task._id)') Delete
