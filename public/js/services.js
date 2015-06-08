@@ -29,6 +29,9 @@ angular.module('myApp.services', [])
                 url: '/api/tasks'
             }).
             success(function(data, status, headers, config) {
+                for (var i = 0; i < data.length; i++){
+                    data[i].due_date = new Date(data[i].due_date).toISOString().slice(0, 10);
+                }
                 return data.reverse();
             }).
             error(function(data, status, headers, config) {

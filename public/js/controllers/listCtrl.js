@@ -1,14 +1,17 @@
-controllers.controller('listCtrl', function($scope, $location, apiService) {
+controllers.controller('listCtrl', function($scope, $location, $filter, apiService) {
     // write Ctrl here
 
     //Get List on Page Load
     $scope.getList = function() {
         apiService.getUserTasks().then(function(response) {
             $scope.tasks = response.data;
+        }, function(response){
+            if(response.status === 403){
+                $location.path('/login');
+            };
         });
     };
     $scope.getList();
-
     //set classes by priority level
     $scope.priorityClass = function(priority) {
         switch (priority) {
@@ -29,7 +32,7 @@ controllers.controller('listCtrl', function($scope, $location, apiService) {
         $scope.editID = itemID;
     };
     //cancel edit view
-    $scope.cancelEdit = function(item) {
+    $scope.cancelEdit = function() {
         $scope.editID = false;
     };
     //POST edit (remove current version, add new version) and update list
