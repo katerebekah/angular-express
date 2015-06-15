@@ -3,6 +3,6 @@ Basic Angular+Express application for task management
 
 
 ###To Do Application
-Clone, npm install, and host to view
+Clone, npm install, run mongo locally, and host on local server to view
 
 
